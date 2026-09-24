@@ -3,7 +3,7 @@ import Layout from "../layout/layout.astro";
 ---
 
 <Layout title="Flirt & Secret Notes">
-    <main class="relative z-10 w-full max-w-2xl mx-auto px-4 sm:px-8 pt-8 flex flex-col items-center overflow-x-hidden">
+    <main class="relative z-10 w-full max-w-2xl mx-auto px-4 sm:px-8 flex flex-col items-center overflow-x-hidden">
         <!-- Interactive Content Wrapper (Awal) -->
         <div
             id="hero-section"
@@ -11,7 +11,11 @@ import Layout from "../layout/layout.astro";
         >
             <!-- Background SVG Shape (DIKEMBALIKAN KE BENTUK ASLI) -->
             <div class="w-[110vw] max-w-160 aspect-square flex items-center justify-center -z-1 pointer-events-none mt-2 sm:mt-6 animate-fade-in">
-                <svg viewBox="0 0 128 128" class="w-full h-full" style="rotate: 225deg;"> 
+                <svg
+                    viewBox="0 0 128 128"
+                    class="w-full h-full"
+                    style="rotate: 225deg;"
+                >
                     <defs>
                         <linearGradient
                             id="flower-grad"
@@ -33,7 +37,7 @@ import Layout from "../layout/layout.astro";
             </div>
             <div class="absolute left-2 top-8 w-11 h-11 pointer-events-none text-[#d8b041]/80">
                 <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 16a6 6 0 1 1 6-6 6 6 0 0 1-6 6z"/>
+                    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 16a6 6 0 1 1 6-6 6 6 0 0 1-6 6z" />
                     <circle cx="12" cy="4" r="2" />
                     <circle cx="12" cy="20" r="2" />
                     <circle cx="4" cy="12" r="2" />
@@ -45,7 +49,13 @@ import Layout from "../layout/layout.astro";
                 <span>Love note</span>
             </div>
             <div class="absolute -right-2 top-22 w-8 h-8 pointer-events-none text-[#d8b041]/70 animate-spin [animation-duration:8s] scale-120">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                >
                     <circle cx="12" cy="12" r="8" stroke-dasharray="6 4" />
                     <circle cx="12" cy="12" r="3" fill="currentColor" />
                 </svg>
@@ -84,7 +94,7 @@ import Layout from "../layout/layout.astro";
                 >
                     <button
                         id="yes-btn"
-                        class="flex-1 max-w-40 sm:max-w-60 py-3.5 sm:py-4 bg-[#d8b041] border-2 border-[#d8b041] rounded-full text-[#C9D6E8] font-serif font-bold text-2xl sm:text-3xl transition-all duration-300 active:scale-95 cursor-pointer "
+                        class="flex-1 max-w-40 sm:max-w-60 py-3.5 sm:py-4 bg-[#d8b041] border-2 border-[#d8b041] rounded-full text-[#C9D6E8] font-serif font-bold text-2xl sm:text-3xl transition-all duration-300 active:scale-95 cursor-pointer"
                     >
                         Yes
                     </button>
@@ -140,6 +150,13 @@ import Layout from "../layout/layout.astro";
                 ></canvas>
             </div>
         </div>
+        <footer class="text-xs mt-12 text-[black] font-serif text-center">
+            © Nobberu 2026.
+            <br />
+            Built using Astro, TailwindCSS, Canvas.
+            <br />
+            Credits: catdad canvas confetti
+        </footer>
     </main>
 </Layout>
 
