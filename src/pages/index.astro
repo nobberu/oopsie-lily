@@ -9,7 +9,7 @@ import Layout from "../layout/layout.astro";
             id="hero-section"
             class="flex flex-col items-center w-full transition-all duration-700 opacity-100 relative"
         >
-            <!-- Background SVG Shape -->
+            <!-- Background SVG Shape (DIKEMBALIKAN KE BENTUK ASLI) -->
             <div class="w-[110vw] max-w-160 aspect-square flex items-center justify-center -z-1 pointer-events-none mt-2 sm:mt-6 animate-fade-in">
                 <svg viewBox="0 0 128 128" class="w-full h-full" style="rotate: 225deg;"> 
                     <defs>
@@ -32,27 +32,48 @@ import Layout from "../layout/layout.astro";
                 </svg>
             </div>
 
-            <!-- ORNAMEN MD3 HERO SECTION -->
-            <!-- MD3 Expressive Star / Sparkle Left Top -->
-            <div class="absolute left-2 top-10 w-12 h-12 pointer-events-none text-[#d8b041]/80 animate-pulse">
+            <!-- ORNAMEN HERO SECTION (BENTUK MD3 NON-STAR & PENAMBAHAN SPACE KOSONG) -->
+            <!-- 1. Left Top - MD3 Ring Blossom (Pengganti Star) -->
+            <div class="absolute left-2 top-8 w-11 h-11 pointer-events-none text-[#d8b041]/80 animate-spin-slow">
                 <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" />
+                    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 16a6 6 0 1 1 6-6 6 6 0 0 1-6 6z"/>
+                    <circle cx="12" cy="4" r="2" />
+                    <circle cx="12" cy="20" r="2" />
+                    <circle cx="4" cy="12" r="2" />
+                    <circle cx="20" cy="12" r="2" />
                 </svg>
             </div>
-            <!-- MD3 Expressive Star / Sparkle Right Bottom -->
-            <div class="absolute right-4 bottom-45 w-10 h-10 pointer-events-none text-[#75A2D0]/80 rotate-12">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" />
+            <!-- 3. Space Kosong Atas Kiri - Additional Soft Badge Tag -->
+            <div class="absolute -left-2 top-48 items-center gap-1.5 px-3 py-1 rounded-full bg-[#75A2D0]/20 border border-[#75A2D0]/40 text-[#4A7BA6] text-[11px] font-semibold backdrop-blur-md shadow-xs -rotate-5 pointer-events-none">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#75A2D0]"></span>
+                <span>Love note</span>
+            </div>
+
+            <!-- 4. Space Kosong Kanan Tengah - MD3 Curved Arc Ring -->
+            <div class="absolute -right-2 top-22 w-8 h-8 pointer-events-none text-[#d8b041]/70 animate-spin scale-120">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <circle cx="12" cy="12" r="8" stroke-dasharray="6 4" />
+                    <circle cx="12" cy="12" r="3" fill="currentColor" />
                 </svg>
             </div>
-            <!-- MD3 Floating Pill Badge Top Right -->
-            <div class="absolute right-4 top-8 items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#d8b041]/25 border border-[#d8b041]/40 text-[#78350F] text-xs font-semibold backdrop-blur-md shadow-sm -rotate-6 pointer-events-none">
+
+            <!-- 5. Floating Pill Badge Top Right -->
+            <div class="absolute right-4 top-8 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#d8b041]/25 border border-[#d8b041]/40 text-[#78350F] text-xs font-semibold backdrop-blur-md shadow-sm -rotate-6 pointer-events-none">
                 <span class="w-2 h-2 rounded-full bg-[#d8b041]"></span>
                 <span>Special Note</span>
             </div>
-            <div class="absolute left-6 bottom-45 items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#d8b041]/25 border border-[#d8b041]/40 text-[#78350F] text-xs font-semibold backdrop-blur-md shadow-sm rotate-6 pointer-events-none">
+
+            <!-- 6. Floating Pill Badge Bottom Left -->
+            <div class="absolute left-6 bottom-45 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#d8b041]/25 border border-[#d8b041]/40 text-[#78350F] text-xs font-semibold backdrop-blur-md shadow-sm rotate-6 pointer-events-none">
                 <span class="w-2 h-2 rounded-full bg-[#d8b041]"></span>
                 <span>Buat lwilwi</span>
+            </div>
+
+            <!-- 7. Space Kosong Bawah Kanan - MD3 Capsule Pill Pattern -->
+            <div class="absolute right-10 bottom-45 flex gap-1.5 pointer-events-none opacity-40 animate-pulse">
+                <span class="w-2 h-6 rounded-full bg-[#75A2D0]"></span>
+                <span class="w-2 h-4 rounded-full bg-[#d8b041]"></span>
+                <span class="w-2 h-2 rounded-full bg-[#4A7BA6]"></span>
             </div>
 
             <!-- 3D Flower PNG Asset -->
@@ -66,7 +87,7 @@ import Layout from "../layout/layout.astro";
             <div class="flex flex-col items-center w-full mt-21 z-10">
                 <h1
                     id="main-title"
-                    class="w-full text-[#d8b041] font-serif text-[clamp(2.5rem,8vw,4.25rem)] text-center leading-[1.1] font-bold px-2"
+                    class="w-full text-[#d8b041] font-serif text-[clamp(2.5rem,8vw,4.25rem)] text-center leading-[1.1] font-bold px-2 drop-shadow-xs"
                 >
                     Will you be mine?
                 </h1>
@@ -77,7 +98,7 @@ import Layout from "../layout/layout.astro";
                 >
                     <button
                         id="yes-btn"
-                        class="flex-1 max-w-40 sm:max-w-60 py-3.5 sm:py-4 bg-[#d8b041] border-2 border-[#d8b041] rounded-full text-[#C9D6E8] font-serif font-bold text-2xl sm:text-3xl transition-all duration-300 active:scale-95 cursor-pointer"
+                        class="flex-1 max-w-40 sm:max-w-60 py-3.5 sm:py-4 bg-[#d8b041] border-2 border-[#d8b041] rounded-full text-[#C9D6E8] font-serif font-bold text-2xl sm:text-3xl transition-all duration-300 active:scale-95 cursor-pointer "
                     >
                         Yes
                     </button>
@@ -96,17 +117,34 @@ import Layout from "../layout/layout.astro";
             id="scratch-section"
             class="hidden flex-col items-center justify-center w-full max-w-md my-auto pt-12 transition-all duration-700 opacity-0 scale-95 z-20 relative"
         >
-            <!-- ORNAMEN MD3 SCRATCH SECTION -->
-            <!-- Top Right MD3 Sparkle -->
-            <div class="absolute -right-2 top-10 w-9 h-9 pointer-events-none text-[#d8b041] animate-bounce">
+            <!-- ORNAMEN SCRATCH SECTION (MD3 NON-STAR) -->
+            <!-- 1. Top Right MD3 Flower Ring -->
+            <div class="absolute -right-2 top-8 w-9 h-9 pointer-events-none text-[#d8b041] animate-pulse">
                 <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="12" cy="4" r="2.5" />
+                    <circle cx="12" cy="20" r="2.5" />
+                    <circle cx="4" cy="12" r="2.5" />
+                    <circle cx="20" cy="12" r="2.5" />
                 </svg>
             </div>
-            <!-- Bottom Left MD3 Soft Blob / Capsule -->
-            <div class="absolute -left-4 bottom-2 w-16 h-8 bg-[#75A2D0]/20 rounded-full blur-xs pointer-events-none -rotate-12"></div>
 
-            <h2 class="text-4xl font-serif font-bold text-[#d8b041] mt-25 mb-6 text-center">
+            <!-- 2. Top Left Space Kosong - MD3 Mini Badge -->
+            <div class="absolute -left-3 top-10 flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#d8b041]/20 border border-[#d8b041]/40 text-[#78350F] text-[10px] font-bold backdrop-blur-xs shadow-xs -rotate-12 pointer-events-none">
+                <span>✦ Hidden</span>
+            </div>
+
+            <!-- 3. Bottom Left MD3 Rounded Soft Capsule -->
+            <div class="absolute -left-4 bottom-2 w-14 h-8 bg-[#75A2D0]/30 rounded-2xl blur-xs pointer-events-none -rotate-12 border border-[#75A2D0]/40"></div>
+
+            <!-- 4. Bottom Right Space Kosong - MD3 Soft Rhombus Pin -->
+            <div class="absolute -right-3 bottom-4 w-7 h-7 pointer-events-none text-[#d8b041]/70 rotate-45">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="4" y="4" width="16" height="16" rx="5" />
+                </svg>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-[#d8b041] mt-25 mb-6 text-center">
                 Gosok kertas ini untuk membaca pesan rahasia
             </h2>
 
