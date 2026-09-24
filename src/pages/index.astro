@@ -10,7 +10,7 @@ import Layout from "../layout/layout.astro";
             class="flex flex-col items-center w-full transition-all duration-700 opacity-100 relative"
         >
             <!-- Background SVG Shape -->
-            <div class="w-[110vw] max-w-160 aspect-square rotate-225 flex items-center justify-center -z-1 pointer-events-none mt-2 sm:mt-6 animate-fade-in">
+            <div class="w-[110vw] max-w-160 aspect-square rotate-170 flex items-center justify-center -z-1 pointer-events-none mt-2 sm:mt-6 animate-fade-in">
                 <svg viewBox="0 0 128 128" class="w-full h-full">
                     <defs>
                         <linearGradient
@@ -36,13 +36,13 @@ import Layout from "../layout/layout.astro";
             <!-- MD3 Expressive Star / Sparkle Left Top -->
             <div class="absolute left-2 top-10 w-12 h-12 pointer-events-none text-[#d8b041]/80 animate-pulse">
                 <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z"/>
+                    <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" />
                 </svg>
             </div>
             <!-- MD3 Expressive Star / Sparkle Right Bottom -->
             <div class="absolute right-4 bottom-45 w-10 h-10 pointer-events-none text-[#75A2D0]/80 rotate-12">
                 <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z"/>
+                    <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" />
                 </svg>
             </div>
             <!-- MD3 Floating Pill Badge Top Right -->
@@ -100,7 +100,7 @@ import Layout from "../layout/layout.astro";
             <!-- Top Right MD3 Sparkle -->
             <div class="absolute -right-2 top-10 w-9 h-9 pointer-events-none text-[#d8b041] animate-bounce">
                 <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z"/>
+                    <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" />
                 </svg>
             </div>
             <!-- Bottom Left MD3 Soft Blob / Capsule -->
@@ -132,7 +132,10 @@ import Layout from "../layout/layout.astro";
 </Layout>
 
 <!-- Load canvas-confetti library -->
-<script is:inline src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script
+    is:inline
+    src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"
+></script>
 
 <script>
     declare const confetti: any;
@@ -187,7 +190,7 @@ import Layout from "../layout/layout.astro";
                 confetti({
                     particleCount: 100,
                     spread: 70,
-                    origin: { y: 0.6 }
+                    origin: { y: 0.6 },
                 });
             }
 
@@ -309,7 +312,7 @@ import Layout from "../layout/layout.astro";
                     confetti({
                         particleCount: 150,
                         spread: 100,
-                        origin: { y: 0.5 }
+                        origin: { y: 0.5 },
                     });
                 }
 
