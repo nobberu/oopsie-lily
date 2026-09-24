@@ -31,10 +31,7 @@ import Layout from "../layout/layout.astro";
                     />
                 </svg>
             </div>
-
-            <!-- ORNAMEN HERO SECTION (BENTUK MD3 NON-STAR & PENAMBAHAN SPACE KOSONG) -->
-            <!-- 1. Left Top - MD3 Ring Blossom (Pengganti Star) -->
-            <div class="absolute left-2 top-8 w-11 h-11 pointer-events-none text-[#d8b041]/80 animate-spin-slow">
+            <div class="absolute left-2 top-8 w-11 h-11 pointer-events-none text-[#d8b041]/80">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 16a6 6 0 1 1 6-6 6 6 0 0 1-6 6z"/>
                     <circle cx="12" cy="4" r="2" />
@@ -43,40 +40,29 @@ import Layout from "../layout/layout.astro";
                     <circle cx="20" cy="12" r="2" />
                 </svg>
             </div>
-            <!-- 3. Space Kosong Atas Kiri - Additional Soft Badge Tag -->
-            <div class="absolute -left-2 top-48 items-center gap-1.5 px-3 py-1 rounded-full bg-[#75A2D0]/20 border border-[#75A2D0]/40 text-[#4A7BA6] text-[11px] font-semibold backdrop-blur-md shadow-xs -rotate-5 pointer-events-none">
+            <div class="absolute -left-4 top-68 items-center gap-1.5 px-3 py-1 rounded-full bg-[#75A2D0]/20 border border-[#75A2D0]/40 text-[#4A7BA6] text-[11px] font-semibold backdrop-blur-md shadow-xs -rotate-5 pointer-events-none">
                 <span class="w-1.5 h-1.5 rounded-full bg-[#75A2D0]"></span>
                 <span>Love note</span>
             </div>
-
-            <!-- 4. Space Kosong Kanan Tengah - MD3 Curved Arc Ring -->
-            <div class="absolute -right-2 top-22 w-8 h-8 pointer-events-none text-[#d8b041]/70 animate-spin scale-120">
+            <div class="absolute -right-2 top-22 w-8 h-8 pointer-events-none text-[#d8b041]/70 animate-spin [animation-duration:8s] scale-120">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
                     <circle cx="12" cy="12" r="8" stroke-dasharray="6 4" />
                     <circle cx="12" cy="12" r="3" fill="currentColor" />
                 </svg>
             </div>
-
-            <!-- 5. Floating Pill Badge Top Right -->
             <div class="absolute right-4 top-8 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#d8b041]/25 border border-[#d8b041]/40 text-[#78350F] text-xs font-semibold backdrop-blur-md shadow-sm -rotate-6 pointer-events-none">
                 <span class="w-2 h-2 rounded-full bg-[#d8b041]"></span>
                 <span>Special Note</span>
             </div>
-
-            <!-- 6. Floating Pill Badge Bottom Left -->
             <div class="absolute left-6 bottom-45 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#d8b041]/25 border border-[#d8b041]/40 text-[#78350F] text-xs font-semibold backdrop-blur-md shadow-sm rotate-6 pointer-events-none">
                 <span class="w-2 h-2 rounded-full bg-[#d8b041]"></span>
                 <span>Buat lwilwi</span>
             </div>
-
-            <!-- 7. Space Kosong Bawah Kanan - MD3 Capsule Pill Pattern -->
             <div class="absolute right-10 bottom-45 flex gap-1.5 pointer-events-none opacity-40 animate-pulse">
                 <span class="w-2 h-6 rounded-full bg-[#75A2D0]"></span>
                 <span class="w-2 h-4 rounded-full bg-[#d8b041]"></span>
                 <span class="w-2 h-2 rounded-full bg-[#4A7BA6]"></span>
             </div>
-
-            <!-- 3D Flower PNG Asset -->
             <img
                 id="flower-img"
                 src="assets/flower.webp"
@@ -111,14 +97,10 @@ import Layout from "../layout/layout.astro";
                 </div>
             </div>
         </div>
-
-        <!-- Section Kertas Gosok (Tersembunyi di awal) -->
         <div
             id="scratch-section"
             class="hidden flex-col items-center justify-center w-full max-w-md my-auto pt-12 transition-all duration-700 opacity-0 scale-95 z-20 relative"
         >
-            <!-- ORNAMEN SCRATCH SECTION (MD3 NON-STAR) -->
-            <!-- 1. Top Right MD3 Flower Ring -->
             <div class="absolute -right-2 top-8 w-9 h-9 pointer-events-none text-[#d8b041] animate-pulse">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <circle cx="12" cy="12" r="4" />
@@ -128,16 +110,10 @@ import Layout from "../layout/layout.astro";
                     <circle cx="20" cy="12" r="2.5" />
                 </svg>
             </div>
-
-            <!-- 2. Top Left Space Kosong - MD3 Mini Badge -->
             <div class="absolute -left-3 top-10 flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#d8b041]/20 border border-[#d8b041]/40 text-[#78350F] text-[10px] font-bold backdrop-blur-xs shadow-xs -rotate-12 pointer-events-none">
                 <span>✦ Hidden</span>
             </div>
-
-            <!-- 3. Bottom Left MD3 Rounded Soft Capsule -->
             <div class="absolute -left-4 bottom-2 w-14 h-8 bg-[#75A2D0]/30 rounded-2xl blur-xs pointer-events-none -rotate-12 border border-[#75A2D0]/40"></div>
-
-            <!-- 4. Bottom Right Space Kosong - MD3 Soft Rhombus Pin -->
             <div class="absolute -right-3 bottom-4 w-7 h-7 pointer-events-none text-[#d8b041]/70 rotate-45">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <rect x="4" y="4" width="16" height="16" rx="5" />
@@ -148,9 +124,8 @@ import Layout from "../layout/layout.astro";
                 Gosok kertas ini untuk membaca pesan rahasia
             </h2>
 
-            <!-- Scratch Card Container -->
+            <!-- Scratch Card  -->
             <div class="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-[#d8b041] bg-white">
-                <!-- Pesan Tersembunyi (Latar Belakang) -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-[#fef3c7] to-[#fde68a]">
                     <span class="text-4xl mb-3">👀</span>
                     <p class="font-serif text-xl sm:text-2xl font-bold text-[#78350F] leading-relaxed">
@@ -159,7 +134,6 @@ import Layout from "../layout/layout.astro";
                     </p>
                 </div>
 
-                <!-- Canvas Kertas Gosok (Lapisan Atas) -->
                 <canvas
                     id="scratch-canvas"
                     class="absolute inset-0 w-full h-full cursor-pointer touch-none"
@@ -169,7 +143,6 @@ import Layout from "../layout/layout.astro";
     </main>
 </Layout>
 
-<!-- Load canvas-confetti library -->
 <script
     is:inline
     src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"
@@ -192,7 +165,7 @@ import Layout from "../layout/layout.astro";
         "scratch-canvas",
     ) as HTMLCanvasElement | null;
 
-    // --- LOGIKA TOMBOL NO (RUNNING BUTTON) ---
+    // --- Running button ---
     if (noBtn) {
         const moveNoButton = (e: Event) => {
             e.preventDefault();
@@ -220,10 +193,10 @@ import Layout from "../layout/layout.astro";
         noBtn.addEventListener("click", moveNoButton);
     }
 
-    // --- LOGIKA TOMBOL YES (TAMPILKAN KERTAS GOSOK) ---
+    // --- Display scracth ---
     if (yesBtn && heroSection && scratchSection && canvas) {
         yesBtn.addEventListener("click", () => {
-            // Confetti saat menekan YES
+            // Confetti yes
             if (typeof confetti === "function") {
                 confetti({
                     particleCount: 100,
@@ -249,7 +222,7 @@ import Layout from "../layout/layout.astro";
         });
     }
 
-    // --- LOGIKA CANVAS KERTAS GOSOK ---
+    // --- Scratch canvas ---
     function initScratchCard(cvs: HTMLCanvasElement) {
         const ctx = cvs.getContext("2d");
         if (!ctx) return;
@@ -259,7 +232,7 @@ import Layout from "../layout/layout.astro";
         cvs.width = rect.width;
         cvs.height = rect.height;
 
-        // Buat warna metallic emas untuk lapisan atas
+        // Metallic
         const grad = ctx.createLinearGradient(0, 0, cvs.width, cvs.height);
         grad.addColorStop(0, "#d8b041");
         grad.addColorStop(0.5, "#fef08a");
@@ -268,7 +241,7 @@ import Layout from "../layout/layout.astro";
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, cvs.width, cvs.height);
 
-        // Tambahkan pola teks/petunjuk di atas kertas gosok
+        // Petunjuk kertas gosok
         ctx.fillStyle = "#78350F";
         ctx.font = "bold 18px serif";
         ctx.textAlign = "center";
@@ -345,7 +318,7 @@ import Layout from "../layout/layout.astro";
             if (percentage > 50) {
                 isCompleted = true;
 
-                // Confetti saat kertas gosok selesai
+                // Confetti kertas gosok selesai
                 if (typeof confetti === "function") {
                     confetti({
                         particleCount: 150,
