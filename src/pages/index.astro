@@ -11,7 +11,7 @@ import Layout from "../layout/layout.astro";
         >
             <!-- Background SVG Shape -->
             <div class="w-[110vw] max-w-160 aspect-square flex items-center justify-center -z-1 pointer-events-none mt-2 sm:mt-6 animate-fade-in">
-                <svg viewBox="0 0 128 128" class="w-full h-full">
+                <svg viewBox="0 0 128 128" class="w-full h-full" style="rotate: 225deg;"> 
                     <defs>
                         <linearGradient
                             id="flower-grad"
@@ -28,7 +28,6 @@ import Layout from "../layout/layout.astro";
                     <path
                         fill="url(#flower-grad)"
                         d="M 64 0 C 85 0 95 15 95 36 C 110 36 128 48 128 64 C 128 80 110 92 95 92 C 95 113 85 128 64 128 C 43 128 33 113 33 92 C 18 92 0 80 0 64 C 0 48 18 36 33 36 C 33 15 43 0 64 0 Z"
-                        style="rotate: 225deg;"
                     />
                 </svg>
             </div>
