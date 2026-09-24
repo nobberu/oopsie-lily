@@ -1,0 +1,454 @@
+---
+import Layout from "../layout/layout.astro";
+---
+
+<Layout title="Flirt & Secret Notes">
+    <!-- Background Gradient Accent -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-20 -left-40 w-96 h-96 bg-rose-500/50 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-purple-500/80 rounded-full blur-3xl animate-pulse"></div>
+    </div>
+
+    <main class="relative z-10 w-full max-w-2xl mx-auto px-4 py-8 flex flex-col items-center min-h-[85vh] justify-center">
+        <!-- Navigation Tabs -->
+        <nav class="flex bg-slate-900/80 p-1.5 rounded-full border border-slate-800 mb-8 shadow-lg backdrop-blur-md">
+            <button
+                onclick="switchTab('dodge')"
+                id="nav-dodge"
+                class="tab-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-rose-500 text-white cursor-pointer"
+            >
+                Mau nggak...
+            </button>
+            <button
+                onclick="switchTab('scratch')"
+                id="nav-scratch"
+                class="tab-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white cursor-pointer"
+            >
+                Gosok sini
+            </button>
+        </nav>
+
+        <!-- TAB 1: DODGE CARD -->
+        <section id="tab-dodge" class="tab-content w-full">
+            <div class="bg-pink-400/60 border border-pink-600 backdrop-blur-xl p-8 rounded-3xl text-center shadow-2xl relative overflow-hidden">
+                <div id="dodge-emoji" class="text-6xl mb-4 select-none">
+                    🥺
+                </div>
+
+                <h1
+                    id="dodge-question-text"
+                    class="text-2xl sm:text-3xl font-bold text-white mb-2"
+                ></h1>
+                <p id="dodge-subtext-text" class="text-white text-sm mb-8"></p>
+
+                <div class="relative min-h-[100px] flex items-center justify-center gap-4">
+                    <!-- Arch Shape CONTAINER -->
+                    <div class="relative w-64 h-80 rounded-t-full overflow-hidden bg-gradient-to-b from-purple-900 via-pink-500 to-amber-400 p-4">
+                        <!-- Konten gambar/3D di dalam -->
+                    </div>
+                    <!-- Outer Div: Khusus menangani Rotasi -->
+                    <button
+                        id="yes-btn"
+                        onclick="handleYesClick()"
+                        class="z-10 px-8 py-3 rounded-2xl bg-gradient-to-r from-rose-500 to-pink-500 text-white font-bold shadow-lg shadow-rose-500/20 hover:scale-105 active:scale-95 transition-transform cursor-pointer"
+                    >
+                        <span id="yes-btn-text"></span>
+                    </button>
+
+                    <button
+                        id="no-btn"
+                        onmouseover="dodgeNoButton()"
+                        onclick="dodgeNoButton()"
+                        class="z-10 px-8 py-3 rounded-2xl bg-slate-800 text-slate-300 font-semibold border border-slate-700 transition-all cursor-pointer"
+                    >
+                        <span id="no-btn-text"></span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: SCRATCH CARD -->
+        <section
+            id="tab-scratch"
+            class="tab-content hidden w-full flex flex-col items-center"
+        >
+            <div class="relative w-full max-w-sm aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-950">
+                <!-- Revealed Content Behind -->
+                <div class="absolute inset-0 p-6 flex flex-col justify-center items-center text-center space-y-2 bg-gradient-to-tr from-slate-900 to-purple-950">
+                    <span class="text-4xl">💌</span>
+                    <p
+                        id="scratch-secret-text"
+                        class="text-xl font-bold text-rose-300 italic"
+                    ></p>
+                </div>
+
+                <!-- Scratch Overlay Canvas -->
+                <canvas
+                    id="scratch-canvas"
+                    class="absolute inset-0 z-10 w-full h-full cursor-pointer"
+                ></canvas>
+            </div>
+
+            <button
+                onclick="initScratch()"
+                class="mt-4 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold border border-slate-700 transition-all cursor-pointer"
+            >
+                🔄 Reset Gosok
+            </button>
+        </section>
+    </main>
+
+    <!-- Modal Success (Dodge Card) -->
+    <div
+        id="success-modal"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md"
+    >
+        <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl max-w-sm w-full text-center shadow-2xl space-y-4">
+            <div class="text-6xl animate-bounce">🥰</div>
+            <h2 id="modal-title" class="text-2xl font-bold text-white"></h2>
+            <p id="modal-desc" class="text-slate-300 text-sm"></p>
+            <button
+                onclick="closeModal()"
+                class="w-full py-3 rounded-xl bg-rose-500 text-white font-bold shadow-lg shadow-rose-500/30 hover:bg-rose-600 transition-all cursor-pointer"
+            >
+                Tutup ✨
+            </button>
+        </div>
+    </div>
+
+    <!-- Client-side Config & Interactive Scripts -->
+    <script is:inline>
+        // ==========================================
+        // 🛠️ CONFIGURATION - CHANGE ANYTHING HERE!
+        // ==========================================
+        const CONFIG = {
+            // Dodge Card Tab Config
+            dodge: {
+                question: "Maw jadi punyaku selamanya nggak?",
+                subtext: "Maw apa nggak hayo",
+                yesBtnText: "Maw",
+                noBtnText: "Enggak",
+                emojis: [
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                    "🥺",
+                    "🙈",
+                    "😅",
+                    "😜",
+                    "🫣",
+                    "❤️",
+                ],
+                successTitle: "YAY! KAN DIBILANG JUGA APA! 🎉",
+                successDesc:
+                    "Screenshot layar ini terus kirim balik ke aku ya! 😉✨",
+            },
+            // Scratch Card Text
+            scratch: {
+                secretMessage:
+                    "Sebenarnya aku udah suka sama kamu dari lama! 🫣",
+            },
+        };
+
+        // ==========================================
+        // 🚀 APPLICATION LOGIC
+        // ==========================================
+        let dodgeCount = 0;
+
+        window.onload = function () {
+            // Apply Initial Configurations
+            document.getElementById("dodge-question-text").innerText =
+                CONFIG.dodge.question;
+            document.getElementById("dodge-subtext-text").innerText =
+                CONFIG.dodge.subtext;
+            document.getElementById("yes-btn-text").innerText =
+                CONFIG.dodge.yesBtnText;
+            document.getElementById("no-btn-text").innerText =
+                CONFIG.dodge.noBtnText;
+            document.getElementById("modal-title").innerText =
+                CONFIG.dodge.successTitle;
+            document.getElementById("modal-desc").innerText =
+                CONFIG.dodge.successDesc;
+
+            document.getElementById("input-to").value = CONFIG.secret.defaultTo;
+            document.getElementById("input-msg").value =
+                CONFIG.secret.defaultMsg;
+            document.getElementById("scratch-secret-text").innerText =
+                `"${CONFIG.scratch.secretMessage}"`;
+
+            // Check URL Params for Shared Notes
+            const params = new URLSearchParams(window.location.search);
+            if (params.get("msg")) {
+                document.getElementById("input-msg").value = decodeURIComponent(
+                    params.get("msg"),
+                );
+                if (params.get("to"))
+                    document.getElementById("input-to").value =
+                        decodeURIComponent(params.get("to"));
+                switchTab("secret");
+            }
+
+            updateCard();
+            initScratch();
+        };
+
+        // Tab Switcher
+        function switchTab(tab) {
+            document
+                .querySelectorAll(".tab-content")
+                .forEach((el) => el.classList.add("hidden"));
+            document.querySelectorAll(".tab-btn").forEach((btn) => {
+                btn.classList.remove("bg-rose-500", "text-white");
+                btn.classList.add("text-slate-400");
+            });
+
+            document.getElementById(`tab-${tab}`).classList.remove("hidden");
+            const activeBtn = document.getElementById(`nav-${tab}`);
+            activeBtn.classList.add("bg-rose-500", "text-white");
+            activeBtn.classList.remove("text-slate-400");
+
+            if (tab === "scratch") setTimeout(initScratch, 50);
+        }
+
+        // Dodge Logic
+        function dodgeNoButton() {
+            dodgeCount++;
+            const noBtn = document.getElementById("no-btn");
+            const yesBtn = document.getElementById("yes-btn");
+            const emoji = document.getElementById("dodge-emoji");
+
+            const x = (Math.random() - 0.5) * 200;
+            const y = (Math.random() - 0.5) * 100;
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+
+            const scale = Math.min(1 + dodgeCount * 0.1, 1.5);
+            yesBtn.style.transform = `scale(${scale})`;
+
+            const emojis = CONFIG.dodge.emojis;
+            emoji.innerText = emojis[Math.min(dodgeCount, emojis.length - 1)];
+        }
+
+        function handleYesClick() {
+            document.getElementById("success-modal").classList.remove("hidden");
+        }
+
+        function closeModal() {
+            dodgeCount = 0;
+            document.getElementById("no-btn").style.transform =
+                "translate(0px, 0px)";
+            document.getElementById("yes-btn").style.transform = "scale(1)";
+            document.getElementById("dodge-emoji").innerText =
+                CONFIG.dodge.emojis[0];
+            document.getElementById("success-modal").classList.add("hidden");
+        }
+
+        // Custom Note Update
+        function updateCard() {
+            const to = document.getElementById("input-to").value || "Kamu";
+            const msg = document.getElementById("input-msg").value || "...";
+            document.getElementById("preview-to").innerText = to;
+            document.getElementById("preview-msg").innerText = `"${msg}"`;
+        }
+
+        function copyShareLink() {
+            const msg = encodeURIComponent(
+                document.getElementById("input-msg").value,
+            );
+            const to = encodeURIComponent(
+                document.getElementById("input-to").value,
+            );
+            const url = `${window.location.origin}${window.location.pathname}?msg=${msg}&to=${to}`;
+
+            navigator.clipboard.writeText(url).then(() => {
+                alert(
+                    "Link pesan berhasil disalin ke clipboard! Tinggal kirim ke dia 🚀",
+                );
+            });
+        }
+
+        // Scratch Canvas logic
+        function initScratch() {
+            const canvas = document.getElementById("scratch-canvas");
+            if (!canvas) return;
+            const ctx = canvas.getContext("2d");
+
+            canvas.width = canvas.offsetWidth || 320;
+            canvas.height = canvas.offsetHeight || 240;
+
+            ctx.fillStyle = "#475569";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#cbd5e1";
+            ctx.font = "bold 14px sans-serif";
+            ctx.textAlign = "center";
+            ctx.fillText(
+                "✨ GOSOK DI SINI ✨",
+                canvas.width / 2,
+                canvas.height / 2,
+            );
+
+            let isScratching = false;
+
+            function scratch(e) {
+                if (!isScratching) return;
+                const rect = canvas.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                const x = clientX - rect.left;
+                const y = clientY - rect.top;
+
+                ctx.globalCompositeOperation = "destination-out";
+                ctx.beginPath();
+                ctx.arc(x, y, 20, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            canvas.onmousedown = (e) => {
+                isScratching = true;
+                scratch(e);
+            };
+            canvas.onmousemove = scratch;
+            window.onmouseup = () => {
+                isScratching = false;
+            };
+
+            canvas.ontouchstart = (e) => {
+                isScratching = true;
+                scratch(e);
+            };
+            canvas.ontouchmove = scratch;
+            window.ontouchend = () => {
+                isScratching = false;
+            };
+        }
+    </script>
+</Layout>

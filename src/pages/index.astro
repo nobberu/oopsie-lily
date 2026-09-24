@@ -1,17 +1,324 @@
 ---
-
+import Layout from "../layout/layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Flirt & Secret Notes">
+    <main class="relative z-10 w-full max-w-2xl mx-auto px-4 sm:px-8 pt-8 flex flex-col items-center overflow-x-hidden min-h-screen">
+        <!-- Interactive Content Wrapper (Awal) -->
+        <div
+            id="hero-section"
+            class="flex flex-col items-center w-full transition-all duration-700 opacity-100 relative"
+        >
+            <!-- Background SVG Shape -->
+            <div class="w-[110vw] max-w-160 aspect-square rotate-225 flex items-center justify-center -z-1 pointer-events-none mt-2 sm:mt-6 animate-fade-in">
+                <svg viewBox="0 0 128 128" class="w-full h-full">
+                    <defs>
+                        <linearGradient
+                            id="flower-grad"
+                            x1="0%"
+                            y1="0%"
+                            x2="100%"
+                            y2="100%"
+                        >
+                            <stop offset="23%" stop-color="#C9D6E8" />
+                            <stop offset="60%" stop-color="#75A2D0" />
+                            <stop offset="100%" stop-color="#4A7BA6" />
+                        </linearGradient>
+                    </defs>
+                    <path
+                        fill="url(#flower-grad)"
+                        d="M 64 0 C 85 0 95 15 95 36 C 110 36 128 48 128 64 C 128 80 110 92 95 92 C 95 113 85 128 64 128 C 43 128 33 113 33 92 C 18 92 0 80 0 64 C 0 48 18 36 33 36 C 33 15 43 0 64 0 Z"
+                    />
+                </svg>
+            </div>
+
+            <!-- ORNAMEN MD3 HERO SECTION -->
+            <!-- MD3 Expressive Star / Sparkle Left Top -->
+            <div class="absolute left-2 top-10 w-12 h-12 pointer-events-none text-[#d8b041]/80 animate-pulse">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z"/>
+                </svg>
+            </div>
+            <!-- MD3 Expressive Star / Sparkle Right Bottom -->
+            <div class="absolute right-4 bottom-45 w-10 h-10 pointer-events-none text-[#75A2D0]/80 rotate-12">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z"/>
+                </svg>
+            </div>
+            <!-- MD3 Floating Pill Badge Top Right -->
+            <div class="absolute right-4 top-8 items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#d8b041]/25 border border-[#d8b041]/40 text-[#78350F] text-xs font-semibold backdrop-blur-md shadow-sm -rotate-6 pointer-events-none">
+                <span class="w-2 h-2 rounded-full bg-[#d8b041]"></span>
+                <span>Special Note</span>
+            </div>
+            <div class="absolute left-6 bottom-45 items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#d8b041]/25 border border-[#d8b041]/40 text-[#78350F] text-xs font-semibold backdrop-blur-md shadow-sm rotate-6 pointer-events-none">
+                <span class="w-2 h-2 rounded-full bg-[#d8b041]"></span>
+                <span>Buat lwilwi</span>
+            </div>
+
+            <!-- 3D Flower PNG Asset -->
+            <img
+                id="flower-img"
+                src="assets/flower.webp"
+                alt=""
+                class="absolute -z-1 w-[95vw] rotate-15 top-[8%] -ml-16 sm:top-[6%] pointer-events-none animate-fade-flower opacity-0 [animation-delay:350ms]"
+            />
+
+            <div class="flex flex-col items-center w-full mt-21 z-10">
+                <h1
+                    id="main-title"
+                    class="w-full text-[#d8b041] font-serif text-[clamp(2.5rem,8vw,4.25rem)] text-center leading-[1.1] font-bold px-2"
+                >
+                    Will you be mine?
+                </h1>
+
+                <div
+                    id="btn-container"
+                    class="flex gap-4 sm:gap-6 mt-8 w-full justify-center px-4 items-center"
+                >
+                    <button
+                        id="yes-btn"
+                        class="flex-1 max-w-40 sm:max-w-60 py-3.5 sm:py-4 bg-[#d8b041] border-2 border-[#d8b041] rounded-full text-[#C9D6E8] font-serif font-bold text-2xl sm:text-3xl transition-all duration-300 active:scale-95 cursor-pointer"
+                    >
+                        Yes
+                    </button>
+                    <button
+                        id="no-btn"
+                        class="flex-1 max-w-40 sm:max-w-60 py-3.5 sm:py-4 bg-[#C9D6E8] border-2 border-[#d8b041] rounded-full text-[#d8b041] font-serif font-bold text-2xl sm:text-3xl transition-all duration-300 active:scale-95 z-50 cursor-pointer"
+                    >
+                        No
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Kertas Gosok (Tersembunyi di awal) -->
+        <div
+            id="scratch-section"
+            class="hidden flex-col items-center justify-center w-full max-w-md my-auto pt-12 transition-all duration-700 opacity-0 scale-95 z-20 relative"
+        >
+            <!-- ORNAMEN MD3 SCRATCH SECTION -->
+            <!-- Top Right MD3 Sparkle -->
+            <div class="absolute -right-2 top-10 w-9 h-9 pointer-events-none text-[#d8b041] animate-bounce">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z"/>
+                </svg>
+            </div>
+            <!-- Bottom Left MD3 Soft Blob / Capsule -->
+            <div class="absolute -left-4 bottom-2 w-16 h-8 bg-[#75A2D0]/20 rounded-full blur-xs pointer-events-none -rotate-12"></div>
+
+            <h2 class="text-4xl font-serif font-bold text-[#d8b041] mt-25 mb-6 text-center">
+                Gosok kertas ini untuk membaca pesan rahasia
+            </h2>
+
+            <!-- Scratch Card Container -->
+            <div class="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-[#d8b041] bg-white">
+                <!-- Pesan Tersembunyi (Latar Belakang) -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-[#fef3c7] to-[#fde68a]">
+                    <span class="text-4xl mb-3">👀</span>
+                    <p class="font-serif text-xl sm:text-2xl font-bold text-[#78350F] leading-relaxed">
+                        "Yeyy maksih sudah milih Yes! Kamu alasan buat senyum
+                        hari ini. Lopyu!"
+                    </p>
+                </div>
+
+                <!-- Canvas Kertas Gosok (Lapisan Atas) -->
+                <canvas
+                    id="scratch-canvas"
+                    class="absolute inset-0 w-full h-full cursor-pointer touch-none"
+                ></canvas>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<!-- Load canvas-confetti library -->
+<script is:inline src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+    declare const confetti: any;
+
+    const noBtn = document.getElementById("no-btn") as HTMLButtonElement | null;
+    const yesBtn = document.getElementById(
+        "yes-btn",
+    ) as HTMLButtonElement | null;
+    const heroSection = document.getElementById(
+        "hero-section",
+    ) as HTMLDivElement | null;
+    const scratchSection = document.getElementById(
+        "scratch-section",
+    ) as HTMLDivElement | null;
+    const canvas = document.getElementById(
+        "scratch-canvas",
+    ) as HTMLCanvasElement | null;
+
+    // --- LOGIKA TOMBOL NO (RUNNING BUTTON) ---
+    if (noBtn) {
+        const moveNoButton = (e: Event) => {
+            e.preventDefault();
+
+            const currentWidth = noBtn.offsetWidth;
+            const btnWidth = currentWidth;
+            const btnHeight = noBtn.offsetHeight;
+            const padding = 20;
+
+            const maxX = window.innerWidth - btnWidth - padding;
+            const maxY = window.innerHeight - btnHeight - padding;
+
+            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+
+            noBtn.style.position = "fixed";
+            noBtn.style.width = `${btnWidth}px`;
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+            noBtn.style.margin = "0";
+        };
+
+        noBtn.addEventListener("mouseover", moveNoButton);
+        noBtn.addEventListener("touchstart", moveNoButton, { passive: false });
+        noBtn.addEventListener("click", moveNoButton);
+    }
+
+    // --- LOGIKA TOMBOL YES (TAMPILKAN KERTAS GOSOK) ---
+    if (yesBtn && heroSection && scratchSection && canvas) {
+        yesBtn.addEventListener("click", () => {
+            // Confetti saat menekan YES
+            if (typeof confetti === "function") {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+
+            // Hilangkan bagian hero / ornamen utama
+            heroSection.classList.add("opacity-0", "scale-90");
+
+            setTimeout(() => {
+                heroSection.classList.add("hidden");
+
+                // Munculkan Kertas Gosok
+                scratchSection.classList.remove("hidden");
+                requestAnimationFrame(() => {
+                    scratchSection.classList.remove("opacity-0", "scale-95");
+                    scratchSection.classList.add("opacity-100", "scale-100");
+                    initScratchCard(canvas);
+                });
+            }, 500);
+        });
+    }
+
+    // --- LOGIKA CANVAS KERTAS GOSOK ---
+    function initScratchCard(cvs: HTMLCanvasElement) {
+        const ctx = cvs.getContext("2d");
+        if (!ctx) return;
+
+        // Atur resolusi canvas sesuai ukuran kontainer
+        const rect = cvs.getBoundingClientRect();
+        cvs.width = rect.width;
+        cvs.height = rect.height;
+
+        // Buat warna metallic emas untuk lapisan atas
+        const grad = ctx.createLinearGradient(0, 0, cvs.width, cvs.height);
+        grad.addColorStop(0, "#d8b041");
+        grad.addColorStop(0.5, "#fef08a");
+        grad.addColorStop(1, "#b45309");
+
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, cvs.width, cvs.height);
+
+        // Tambahkan pola teks/petunjuk di atas kertas gosok
+        ctx.fillStyle = "#78350F";
+        ctx.font = "bold 18px serif";
+        ctx.textAlign = "center";
+        ctx.fillText("Gosok dulu sini", cvs.width / 2, cvs.height / 2);
+
+        let isDrawing = false;
+        let isCompleted = false;
+
+        const getPos = (e: MouseEvent | TouchEvent) => {
+            const rect = cvs.getBoundingClientRect();
+            let clientX = 0;
+            let clientY = 0;
+
+            if ("touches" in e && e.touches.length > 0) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else if ("clientX" in e) {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+
+            return {
+                x: clientX - rect.left,
+                y: clientY - rect.top,
+            };
+        };
+
+        const scratch = (e: MouseEvent | TouchEvent) => {
+            if (!isDrawing) return;
+            e.preventDefault();
+
+            const { x, y } = getPos(e);
+
+            ctx.globalCompositeOperation = "destination-out";
+            ctx.beginPath();
+            ctx.arc(x, y, 25, 0, Math.PI * 2);
+            ctx.fill();
+
+            checkScratchPercentage();
+        };
+
+        const startDrawing = (e: MouseEvent | TouchEvent) => {
+            isDrawing = true;
+            scratch(e);
+        };
+
+        const stopDrawing = () => {
+            isDrawing = false;
+        };
+
+        // Event listener mouse & touch
+        cvs.addEventListener("mousedown", startDrawing);
+        cvs.addEventListener("mousemove", scratch);
+        cvs.addEventListener("mouseup", stopDrawing);
+        cvs.addEventListener("mouseleave", stopDrawing);
+
+        cvs.addEventListener("touchstart", startDrawing, { passive: false });
+        cvs.addEventListener("touchmove", scratch, { passive: false });
+        cvs.addEventListener("touchend", stopDrawing);
+
+        // Cek jika sudah digosok > 50%, buka otomatis sisanya
+        function checkScratchPercentage() {
+            if (isCompleted) return;
+
+            const imageData = ctx.getImageData(0, 0, cvs.width, cvs.height);
+            const pixels = imageData.data;
+            let clearPixels = 0;
+
+            for (let i = 3; i < pixels.length; i += 4) {
+                if (pixels[i] === 0) clearPixels++;
+            }
+
+            const percentage = (clearPixels / (pixels.length / 4)) * 100;
+            if (percentage > 50) {
+                isCompleted = true;
+
+                // Confetti saat kertas gosok selesai
+                if (typeof confetti === "function") {
+                    confetti({
+                        particleCount: 150,
+                        spread: 100,
+                        origin: { y: 0.5 }
+                    });
+                }
+
+                cvs.style.transition = "opacity 0.6s ease";
+                cvs.style.opacity = "0";
+                setTimeout(() => {
+                    cvs.style.display = "none";
+                }, 600);
+            }
+        }
+    }
+</script>

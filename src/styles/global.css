@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+@theme {
+    --font-serif: "Instrument Serif", serif;
+    --font-sans: "Instrument Sans", sans-serif;
+
+    /* Custom Easing Tokens */
+    --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Modernized Animations */
+    --animate-fade-in: fade-in 0.8s var(--ease-snappy) forwards;
+    --animate-fade-flower: fade-flower 0.8s var(--ease-spring) forwards;
+}
+
+/* Keyframes defined at top level */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+        rotate: 215deg;
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        rotate: 225deg;
+    }
+}
+
+@keyframes fade-flower {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+        rotate: 30deg;
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        rotate: 15deg;
+    }
+}
